@@ -20,15 +20,18 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
 
       - name: Ekstrak proyek
-        run: unzip -q AutoScrollJoy.zip
+        run: |
+          mkdir -p project_extracted
+          unzip -q AutoScrollJoy.zip -d project_extracted
 
       - name: Build debug APK
         run: |
+          cd project_extracted
           chmod +x gradlew
           ./gradlew assembleDebug --stacktrace
 
       - uses: actions/upload-artifact@v4
         with:
           name: AutoScrollJoy-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: project_extracted/app/build/outputs/apk/debug/app-debug.apk
           
