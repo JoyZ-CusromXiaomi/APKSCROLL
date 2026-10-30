@@ -23,7 +23,6 @@ jobs:
         run: unzip -q AutoScrollJoy.zip
 
       - name: Build debug APK
-        working-directory: AutoScrollJoy
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug --stacktrace
@@ -31,5 +30,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: AutoScrollJoy-apk
-          path: AutoScrollJoy/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
           
