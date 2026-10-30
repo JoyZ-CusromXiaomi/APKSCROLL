@@ -2,9 +2,7 @@ name: Build APK Android
 
 on:
   push:
-    paths:
-      - 'AutoScrollJoy.zip'
-      - '.github/workflows/android.yml'
+    branches: [ "main", "master" ]
   workflow_dispatch:
 
 jobs:
